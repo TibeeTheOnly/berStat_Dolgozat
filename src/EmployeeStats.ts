@@ -13,23 +13,37 @@ export class EmployeeStats {
 
     static getAverageSalary(employees: EmployeeStats[]): number {
         if (employees.length === 0) {
-            return 0;
+            throw new Error('No employees');
         }
         return employees.reduce((sum, employee) => sum + employee.salary, 0) / employees.length;
     }
 
     static getMaxSalary(employees: EmployeeStats[]): number {
         if (employees.length === 0) {
-            return 0;
+            throw new Error('No employees');
         }
         return employees.reduce((max, employee) => Math.max(max, employee.salary), 0);
     }
 
     static getMinSalary(employees: EmployeeStats[]): number {
         if (employees.length === 0) {
-            return 0;
+            throw new Error('No employees');
         }
         return employees.reduce((min, employee) => Math.min(min, employee.salary), Infinity);
+    }
+
+    static getAverageAge(employees: EmployeeStats[]): number {
+        if (employees.length === 0) {
+            throw new Error('No employees');
+        }
+        return employees.reduce((sum, employee) => sum + employee.age, 0) / employees.length;
+    }
+
+    static getHighestPaidEmployee(employees: EmployeeStats[]): EmployeeStats {
+        if (employees.length === 0) {
+            throw new Error('No employees');
+        }
+        return employees.reduce((max, employee) => max.salary > employee.salary ? max : employee);
     }
 }
 
